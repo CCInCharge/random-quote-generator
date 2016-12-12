@@ -1,0 +1,11 @@
+@font-face {
+  font-family: just_kidding;
+  src: url('fonts/just_kidding.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+#pageTitle {
+  font-family: just_kidding;
+}

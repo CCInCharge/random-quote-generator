@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
   <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
   <script src="https://use.fontawesome.com/b77f7d4ffb.js"></script>
   <script type="text/javascript">
@@ -18,7 +19,7 @@
       }
 
     $(document).ready(function() {
-      myJumbotron();
+      // myJumbotron();
 
       $("#getMessage").on("click", function(){
 
@@ -30,17 +31,17 @@
       });
       });
   </script>
+
 </head>
 
 <body>
   <div class="container">
-    <div class="wrapper">
+    <h1 id="pageTitle" class="text-center">Random Quotes</h1>
       <div class="jumbotron text-center">
-        <div class="quote">fdsafdsfasfas</div>
-        <div class="author">d</div>
+        <div class="quote"></div>
+        <div class="author"></div>
         <button id="getMessage">Get a quote!</button>
       </div>
-    </div>
   </div>
 </body>
 
