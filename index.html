@@ -9,12 +9,22 @@
     var currentQuote = "";
     var currentAuthor = "";
 
+    function parseContent(content) {
+      // Strips \n and <p> tags from API call result and removes leading
+      // and trailing whitespace
+      if (content.length > 11) {
+      content = content.substr(3,content.length - 8);
+      content = content.trim();
+      }
+      return content;
+    }
+
     function parseJSON(json) {
-      currentQuote = json[0]["content"];
+      currentQuote = parseContent(json[0]["content"]);
       currentAuthor = json[0]["title"];
       $(".quote").html(currentQuote);
       $(".author").html(currentAuthor);
-    };
+    }
 
     function getQuote() {
       $.ajax({
