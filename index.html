@@ -9,22 +9,16 @@
     var currentQuote = "";
     var currentAuthor = "";
 
-    function parseJSON(json) {
-      currentQuote = json["content"];
-      currentAuthor = json["title"];
-      $(".quote").html(currentQuote);
-      $(".author").html(currentAuthor);
-    };
-
     function getQuote() {
-    $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1",
-          function(json) {
-            currentQuote = json["content"];
-            currentAuthor = json["title"];
-            $(".quote").html(currentQuote);
-            $(".author").html(currentAuthor);
-          });
-        }
+
+    $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?",
+      function(json) {
+        currentQuote = json["quoteText"];
+        currentAuthor = json["quoteAuthor"];
+        $(".quote").html(currentQuote);
+        $(".author").html(currentAuthor);
+      });
+    }
 
     function myJumbotron() {
       var winHeight = $(window).height();
