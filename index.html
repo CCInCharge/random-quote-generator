@@ -6,6 +6,20 @@
   <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
   <script src="https://use.fontawesome.com/b77f7d4ffb.js"></script>
   <script type="text/javascript">
+    var currentQuote = "";
+    var currentAuthor = "";
+
+    function getQuote() {
+
+    $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?",
+      function(json) {
+        currentQuote = json["quoteText"];
+        currentAuthor = json["quoteAuthor"];
+        $(".quote").html(currentQuote);
+        $(".author").html(currentAuthor);
+      });
+    }
+
     function myJumbotron() {
       var winHeight = $(window).height();
       // make wrapper div whole height of window
@@ -20,19 +34,8 @@
 
     $(document).ready(function() {
       // myJumbotron();
-
-      var currentQuote = "";
-      var currentAuthor = "";
-      $("#getMessage").on("click", function(){
-
-      $.getJSON("http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?",
-        function(json) {
-          currentQuote = json["quoteText"];
-          currentAuthor = json["quoteAuthor"];
-          $(".quote").html(currentQuote);
-          $(".author").html(currentAuthor);
-        });
-      });
+      getQuote();
+      $("#getMessage").on("click", getQuote);
       });
   </script>
 
@@ -43,7 +46,7 @@
     <h1 id="pageTitle" class="text-center">Random Quotes</h1>
       <div class="jumbotron text-center">
         <div class="quote"></div>
-        <div class="author">d</div>
+        <div class="author"></div>
         <button id="getMessage">Get a quote!</button>
       </div>
   </div>
