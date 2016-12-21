@@ -17,7 +17,7 @@ function parseJSON(json) {
   tweetQuote = encodeURIComponent(currentQuote);
   tweetAuthor = encodeURIComponent(currentAuthor);
   tweetText = '"' + currentQuote + '" - ' + currentAuthor;
-  tweetURL = "http://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText
+  tweetURL = "https://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText
 
   $("#tweet-button").attr("src", tweetURL);
 }
