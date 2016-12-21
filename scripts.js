@@ -1,6 +1,3 @@
-var currentQuote = "";
-var currentAuthor = "";
-
 function parseContent(content) {
   // Strips \n and <p> tags from API call result and removes leading
   // and trailing whitespace
@@ -16,6 +13,13 @@ function parseJSON(json) {
   currentAuthor = json[0]["title"];
   $(".quote").html(currentQuote);
   $(".author").html(currentAuthor);
+
+  tweetQuote = encodeURIComponent(currentQuote);
+  tweetAuthor = encodeURIComponent(currentAuthor);
+  tweetText = '"' + currentQuote + '" - ' + currentAuthor;
+  tweetURL = "http://platform.twitter.com/widgets/tweet_button.html?text=" + tweetText
+
+  $("#tweet-button").attr("src", tweetURL);
 }
 
 function getQuote() {
@@ -27,37 +31,14 @@ function getQuote() {
   });
 }
 
-function myJumbotron() {
-  var winHeight = $(window).height();
-  // make wrapper div whole height of window
-  $('.wrapper').css({
-      height: winHeight
-  });
-  // make jumbotron be in the middle vertically
-  $('.jumbotron').css({
-      marginTop: (winHeight / 2) + 'px'
-  });
-  }
-
 $(document).ready(function() {
-  // myJumbotron();
+  var currentQuote = "";
+  var currentAuthor = "";
+  var tweetQuote = "";
+  var tweetAuthor = "";
+  var tweetURL = "";
+  var tweetText = "";
+
   getQuote();
   $("#getMessage").on("click", getQuote);
   });
-
-window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));
